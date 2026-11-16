@@ -1,0 +1,19 @@
+# The Redis of the integration tests: `make integration` starts it, runs
+# tests.test_server against it and stops it. The user `ingot` of its ACL has
+# a password with the characters a URI would need quoted; the user `default`
+# is off.
+services:
+  redis:
+    image: redis:8.8-alpine
+    ports:
+      - "127.0.0.1:${INGOT_REDIS_TEST_PORT:-16379}:6379"
+    command: [
+      "redis-server",
+      "--user", "default", "off",
+      "--user", "ingot", "on", ">p@ss:w/rd", "~*", "&*", "+@all",
+    ]
+    healthcheck:
+      test: ["CMD", "redis-cli", "--user", "ingot", "--pass", "p@ss:w/rd", "ping"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
