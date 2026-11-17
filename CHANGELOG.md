@@ -5,6 +5,10 @@ and TestPyPI since 2021, is the previous implementation.
 
 <!-- towncrier release notes start -->
 
+## [0.3.0] - 2026-11-17
+### Changed
+- Moved on to ingots 0.35.
+
 ## [0.2.0] - 2026-11-16
 ### Added
 - Started ingot-redis, an addon of Ingots for redis-py, for `ingots` 0.34.

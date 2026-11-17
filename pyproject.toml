@@ -1,6 +1,6 @@
 [project]
 name = "ingot-redis"
-version = "0.2.0"
+version = "0.3.0"
 description = "Integration of redis-py, the official client of Redis, into Ingots."
 readme = "README.md"
 requires-python = ">=3.14"
