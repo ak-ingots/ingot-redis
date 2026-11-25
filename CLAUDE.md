@@ -1,27 +1,28 @@
 # CLAUDE.md
 
 Guidance for Claude Code in this repository. Keep it under 200 lines and do not
-repeat what README or the ADRs say: link to them.
+repeat what README, `docs/` or the ADRs say: link to them.
 
 ## What this is
 
 `ingot-redis`: an addon of [Ingots](https://github.com/ak-ingots/ingots) for
-redis-py. `RedisProject` (`project.py`) takes the addon's `RedisSettingsUnit`
-(`settings/`) with its `RedisConfigs` (`settings/configs.py`, named
-`REDIS_*`) and its `RedisLoggingUnit` (`logging/`, the logger
-`ingot_redis`); a unit lives in the `__init__.py` of its package, as in
-`ingots.defaults`, and a class takes the prefix `Redis`, so that an
-application imports it under its own name. `redis/` is the Redis unit:
-`clients/` the clients (`BaseRedisClient`, a component holding redis-py's
-`redis.asyncio.Redis`, with hooks for its configs; `DefaultRedisClient` on
-`REDIS_DEFAULT_*`). A connection wrapper, not an SDK: redis-py is given as
-it is. `tests/test_readme.py` runs the README for consumers; `make
-integration` runs `tests/test_server.py` against the Redis of
-`docker-compose.yml`, in `make check` too: it needs Docker.
-`python -m ingot_redis` runs the addon on its own (prefix `INGOT`). A
-library (ADR 0003), Python >= 3.14, part of the
+redis-py. A connection wrapper, not an SDK: redis-py is given as it is.
+A library (ADR 0003), Python >= 3.14, part of the
 [ak-ingots](https://github.com/ak-ingots) ecosystem; the meta repository
 `ingots-libs` holds the ecosystem-wide decisions in `docs/adr/`.
+
+## Layout
+
+- `project.py`: `RedisProject`, with `RedisSettingsUnit` (`settings/`, the
+  configs `REDIS_*` in `settings/configs.py`) and `RedisLoggingUnit`
+  (`logging/`, the logger `ingot_redis`).
+- `redis/`: the Redis unit; `clients/` the clients, `BaseRedisClient`, a
+  component holding redis-py's `redis.asyncio.Redis`, with hooks for its
+  configs; `DefaultRedisClient` on `REDIS_DEFAULT_*`.
+- `tests/test_readme.py` runs the README for consumers; `make integration`
+  runs `tests/test_server.py` against the Redis of `docker-compose.yml`, in
+  `make check` too: it needs Docker. `python -m ingot_redis` runs the addon
+  on its own (prefix `INGOT`).
 
 ## Commands
 
@@ -62,8 +63,8 @@ One test: `uv run python -m unittest tests.test_canary.CanaryTestCase`.
 - A release: a pull request sets the version (`uv version X.Y.Z`) and
   collates the changelog (`make cl-build VERSION=X.Y.Z`); after the merge,
   the tag `vX.Y.Z` on its commit starts the `release` workflow, which
-  publishes to TestPyPI, tests the package installed from it
-  (the shared workflow `index-test`), then publishes to PyPI once the user approves the
+  publishes to TestPyPI, tests the package installed from it (the shared
+  workflow `index-test`), then publishes to PyPI once the user approves the
   `pypi` environment. Run by hand, the workflow rehearses on TestPyPI only.
 
 ## Rules
@@ -88,10 +89,20 @@ One test: `uv run python -m unittest tests.test_canary.CanaryTestCase`.
   `.github/workflows/ci.yml`. Change them together.
 - CI runs exactly the `make` targets; a new check goes into `make check` and
   `ci.yml` together.
+- A comment tells what the code cannot: why it is so, a constraint from
+  outside (a bug of a library, a standard, a measure), a trap for the next
+  change. None repeats the code, a name, a docstring or what a key of a
+  config says, nor tells the history of a change: that is the commit's.
 - Code layout and naming follow ADR 0007; the PUER rules of `ingots` apply to
   an addon too: hooks start with an underscore and are overridden, not
   called; a protected member is touched only by its class, its subclasses
   and its own package.
+
+Of this package:
+
+- A unit lives in the `__init__.py` of its package, as in `ingots.defaults`,
+  and a class takes the prefix `Redis`, so that an application imports it
+  under its own name.
 
 ## Design
 
