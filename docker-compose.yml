@@ -1,7 +1,5 @@
-# The Redis of the integration tests: `make integration` starts it, runs
-# tests.test_server against it and stops it. The user `ingot` of its ACL has
-# a password with the characters a URI would need quoted; the user `default`
-# is off.
+# The user `ingot` of its ACL has a password with the characters a URI
+# would need quoted; the user `default` is off.
 services:
   redis:
     image: redis:8.8-alpine

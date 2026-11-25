@@ -24,7 +24,6 @@ class RedisConfigs(Configs):
 
     REDIS_LOGGING_LEVEL = LogLevelConfig(logging.INFO)
 
-    # the default client
     REDIS_DEFAULT_HOST = StrConfig("localhost")
     REDIS_DEFAULT_PORT = IntConfig(6379)
     REDIS_DEFAULT_DB = IntConfig(0)
