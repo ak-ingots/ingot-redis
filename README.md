@@ -1,5 +1,7 @@
 # ingot-redis
 
+[![PyPI](https://img.shields.io/pypi/v/ingot-redis.svg)](https://pypi.org/project/ingot-redis/)
+[![Python](https://img.shields.io/pypi/pyversions/ingot-redis.svg)](https://pypi.org/project/ingot-redis/)
 [![ci](https://github.com/ak-ingots/ingot-redis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ak-ingots/ingot-redis/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ak-ingots/ingot-redis/blob/main/LICENSE)
 
