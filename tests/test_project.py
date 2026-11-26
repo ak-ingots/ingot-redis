@@ -11,7 +11,7 @@ from ingot_redis.logging import RedisLoggingUnit
 from ingot_redis.settings import RedisSettingsUnit
 from ingot_redis.settings.configs import RedisConfigs
 from ingots.defaults import Project
-from ingots.puer.cli import CommandRunner
+from ingots.defaults.cli import CommandRunner
 
 
 class ProjectTestCase(unittest.TestCase):
