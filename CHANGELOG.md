@@ -5,6 +5,12 @@ and TestPyPI since 2021, is the previous implementation.
 
 <!-- towncrier release notes start -->
 
+## [0.6.0] - 2026-11-27
+### Changed
+- On ingots 0.38: the command line a domain of the defaults, its runner
+  imported from `ingots.defaults.cli`; the configs printed on configuring
+  only when `IS_PRINT_CONFIGS` is on, to the standard error.
+
 ## [0.5.0] - 2026-11-24
 ### Changed
 - Moved on to ingots 0.37.
