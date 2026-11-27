@@ -22,7 +22,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "ingots>=0.37.0,<0.38",
+    "ingots>=0.38.0,<0.39",
     "redis>=8.1.0,<9",
 ]
 

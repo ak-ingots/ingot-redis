@@ -8,7 +8,7 @@ from unittest import mock
 
 from ingot_redis import RedisProject
 from ingot_redis.redis.clients import DefaultRedisClient, base
-from ingots.puer.cli import CommandRunner
+from ingots.defaults.cli import CommandRunner
 from redis.asyncio import Redis
 from redis.exceptions import ConnectionError
 
